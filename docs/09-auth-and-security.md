@@ -89,4 +89,7 @@ The authentication & security system ensures that:
 - Access is granted based on roles (RBAC)
 - Sensitive operations are protected
 - Best practices prevent common security vulnerabilities
+-
+- <img width="1536" height="1024" alt="9 Auth" src="https://github.com/user-attachments/assets/04d512fc-5a79-4b32-b4cd-375cdd71c41e" />
+
 

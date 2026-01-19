@@ -40,3 +40,15 @@ Time wasted searching instead of learning
 Unequal access to quality resources
 
 Reduced collaboration between batches
+
+## Why Learnify NUST is Needed
+
+Learnify NUST addresses these issues by offering a university-verified, structured learning platform where content is:
+
+Organized section-wise
+
+Curated by seniors and educators
+
+Aligned with actual course requirements
+
+This ensures students spend more time learning and less time searchin

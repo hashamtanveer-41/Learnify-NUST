@@ -18,8 +18,8 @@ public class Videos {
     @ManyToOne
     @JoinColumn(name = "courses_id")
     private Courses course_id;
-    @ManyToMany(mappedBy = "video_id")
-    private List<Progress> progress;
+//    @OneToMany(mappedBy = "video_id")
+//    private List<Progress> progress;
     private String title;
     private String youtube_id;
     private int duration;

@@ -20,8 +20,9 @@ public class Users {
     private String email;
     private String password;
     @ManyToOne
+    @JoinColumn(name = "role_id")
     private Roles role_id;
-    @ManyToMany(mappedBy = "user_id")
-    private List<Progress> progress;
+//    @OneToMany(mappedBy = "user_id")
+//    private List<Progress> progress;
 
 }

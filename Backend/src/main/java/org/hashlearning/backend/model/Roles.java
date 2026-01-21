@@ -17,7 +17,4 @@ public class Roles {
     @Id
     private int id;
     private String name;
-    @OneToMany(mappedBy = "role_id")
-    private List<Users> user_id;
-
 }

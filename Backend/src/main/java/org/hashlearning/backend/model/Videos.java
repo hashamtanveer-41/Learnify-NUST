@@ -18,7 +18,6 @@ public class Videos {
     @ManyToOne
     @JoinColumn(name = "courseId")
     private Courses courseId;
-
     private String title;
     private String youtubeId;
     private int duration;

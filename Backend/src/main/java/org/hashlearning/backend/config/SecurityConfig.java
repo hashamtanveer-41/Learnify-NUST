@@ -34,7 +34,17 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(request -> request
-                        .requestMatchers("/api/register", "/api/auth/login", "/api/users", "/api/courses", "/api/course", "/api/role", "/api/roles", "/api/courses/{courseId}").permitAll()
+                        .requestMatchers("/api/register",
+                                "/api/auth/login",
+                                "/api/users",
+                                "/api/courses",
+                                "/api/course",
+                                "/api/role",
+                                "/api/roles",
+                                "/api/courses/{courseId}",
+                                "/api/videos/{videoId}",
+                                "/api/videos")
+                        .permitAll()
                         .anyRequest().authenticated()
                 );
         return http.build();

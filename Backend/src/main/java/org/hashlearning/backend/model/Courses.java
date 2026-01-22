@@ -14,12 +14,8 @@ import java.util.List;
 public class Courses {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int courses_id;
-    private String course_name;
-    private String course_desc;
+    private int courseId;
+    private String courseName;
+    private String courseDesc;
     private int semester;
-    @OneToMany(mappedBy = "course_id")
-    private List<Videos> videos;
-    @OneToMany(mappedBy = "course_id")
-    private List<Notes> notes;
 }

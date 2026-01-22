@@ -14,13 +14,12 @@ import java.util.List;
 public class Videos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int video_id;
+    private int videoId;
     @ManyToOne
-    @JoinColumn(name = "courses_id")
-    private Courses course_id;
-//    @OneToMany(mappedBy = "video_id")
-//    private List<Progress> progress;
+    @JoinColumn(name = "courseId")
+    private Courses courseId;
+
     private String title;
-    private String youtube_id;
+    private String youtubeId;
     private int duration;
 }

@@ -14,7 +14,7 @@ public class Notes {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int notes_id;
     @ManyToOne
-    private Courses course_id;
+    private Courses courseId;
     private String title;
     private String content;
 }

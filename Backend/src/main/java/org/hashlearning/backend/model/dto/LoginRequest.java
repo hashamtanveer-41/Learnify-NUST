@@ -1,4 +1,7 @@
 package org.hashlearning.backend.model.dto;
 
-public record LoginRequest() {
+public record LoginRequest(
+        String email,
+        String password
+) {
 }

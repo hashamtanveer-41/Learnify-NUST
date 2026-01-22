@@ -2,6 +2,8 @@ package org.hashlearning.backend.controller;
 
 
 import org.hashlearning.backend.model.Users;
+import org.hashlearning.backend.model.dto.LoginRequest;
+import org.hashlearning.backend.model.dto.LoginResponse;
 import org.hashlearning.backend.model.dto.UserResponse;
 import org.hashlearning.backend.model.dto.UsersRequest;
 import org.hashlearning.backend.service.UserService;
@@ -29,5 +31,14 @@ public class UsersController {
     @GetMapping("/users")
     public ResponseEntity<List<Users>> getAllUsers(){
         return new ResponseEntity<>(service.findAllUsers(), HttpStatus.OK);
+    }
+
+    @PostMapping("/auth/login")
+    public  ResponseEntity<LoginResponse> userLogin(@RequestBody LoginRequest loginRequest){
+        if (service.userLogin(loginRequest)!= null){
+            return  new ResponseEntity<>(service.userLogin(loginRequest), HttpStatus.OK);
+        }else {
+            return new ResponseEntity<>(HttpStatus.BAD_GATEWAY);
+        }
     }
 }

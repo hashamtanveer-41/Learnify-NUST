@@ -1,4 +1,8 @@
 package org.hashlearning.backend.model.dto;
 
-public class LoginResponse {
+import org.hashlearning.backend.model.Users;
+
+public record LoginResponse(
+Users users
+) {
 }

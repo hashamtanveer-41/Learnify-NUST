@@ -43,7 +43,9 @@ public class SecurityConfig {
                                 "/api/roles",
                                 "/api/courses/{courseId}",
                                 "/api/videos/{videoId}",
-                                "/api/videos")
+                                "/api/videos",
+                                "/api/courses/{courseId}/notes",
+                                "/api/courses/{courseId}/notes")
                         .permitAll()
                         .anyRequest().authenticated()
                 );

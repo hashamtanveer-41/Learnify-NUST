@@ -6,6 +6,7 @@ import org.hashlearning.backend.model.dto.LoginRequest;
 import org.hashlearning.backend.model.dto.LoginResponse;
 import org.hashlearning.backend.model.dto.UserResponse;
 import org.hashlearning.backend.model.dto.UsersRequest;
+import org.hashlearning.backend.service.JWTService;
 import org.hashlearning.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,9 @@ public class UsersController {
 
     @Autowired
     private UserService service;
+
+    @Autowired
+    private JWTService jwtService;
 
     @PostMapping("/register")
     public ResponseEntity<UserResponse> registerUser(@RequestBody UsersRequest usersRequest){
@@ -38,7 +42,17 @@ public class UsersController {
         if (service.userLogin(loginRequest)!= null){
             return  new ResponseEntity<>(service.userLogin(loginRequest), HttpStatus.OK);
         }else {
-            return new ResponseEntity<>(HttpStatus.BAD_GATEWAY);
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
+    }
+
+    @PutMapping("/register")
+    public ResponseEntity<UserResponse> updateUser(@RequestBody UsersRequest usersRequest){
+        return new ResponseEntity<>(service.registerUser(usersRequest), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/users/{userId}")
+    public String deleteUser(@PathVariable int userId){
+        return service.deleteUserById(userId);
     }
 }

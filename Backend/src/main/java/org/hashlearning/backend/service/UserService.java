@@ -29,6 +29,9 @@ public class UserService {
     @Autowired
     AuthenticationManager manager;
 
+    @Autowired
+    private JWTService jwtService;
+
     private final BCryptPasswordEncoder encoder= new BCryptPasswordEncoder(14);
 
     public UserResponse registerUser(UsersRequest usersRequest) {
@@ -56,24 +59,26 @@ public class UserService {
     }
 
     public LoginResponse userLogin(LoginRequest loginRequest) {
-        System.out.println("Login method is called");
-
         try {
             Authentication authentication = manager.authenticate(
                     new UsernamePasswordAuthenticationToken(loginRequest.email(), loginRequest.password())
             );
-
-            System.out.println("after authentication");
-
             if (authentication.isAuthenticated()) {
-                return new LoginResponse(userRepo.findUsersByEmail(loginRequest.email()));
+                return new LoginResponse(
+                        jwtService.getToken(loginRequest.email()),
+                        userRepo.findUsersByEmail(loginRequest.email())
+                        );
             }
-
         } catch (Exception e) {
             System.out.println("Authentication Failed: " + e.getMessage());
             e.printStackTrace();
         }
 
         return null;
+    }
+
+    public String deleteUserById(int userId) {
+        userRepo.deleteUsersById(userId);
+     return "User deleted successfully";
     }
 }

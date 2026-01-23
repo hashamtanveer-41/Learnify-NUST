@@ -3,6 +3,7 @@ package org.hashlearning.backend.model.dto;
 import org.hashlearning.backend.model.Users;
 
 public record LoginResponse(
-Users users
+        String jwtToken,
+        Users users
 ) {
 }

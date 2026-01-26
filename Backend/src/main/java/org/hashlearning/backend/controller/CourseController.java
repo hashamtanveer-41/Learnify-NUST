@@ -8,6 +8,7 @@ import org.hashlearning.backend.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,12 +21,14 @@ public class CourseController {
     @Autowired
     private CourseService courseService;
 
+
     @GetMapping("/courses")
     public ResponseEntity<List<Courses>> getAllCourses(){
         return new ResponseEntity<>(courseService.getAllCourses(), HttpStatus.OK);
     }
 
     @PostMapping("/course")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<CourseResponse> addCourse(@RequestBody CourseRequest courseRequest){
         return new ResponseEntity<>(courseService.addCourse(courseRequest), HttpStatus.OK );
     }

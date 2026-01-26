@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.config.annotation.web.configurers.HttpsRedirectConfigurer;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,11 +20,13 @@ public class RolesController {
     private RolesService rolesService;
 
     @GetMapping("/roles")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<Roles>> getAllCourses(){
         return new ResponseEntity<>(rolesService.getAllCourses(), HttpStatus.OK);
     }
 
     @PostMapping("/role")
+    @PreAuthorize("hasRole('ADMIN')")
     public String addRole(@RequestBody Roles role){
         return rolesService.addRole(role);
     }

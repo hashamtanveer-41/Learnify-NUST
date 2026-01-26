@@ -40,16 +40,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests(request -> request
                         .requestMatchers("/api/register",
                                 "/api/auth/login",
-                                "/api/users",
                                 "/api/courses",
-                                "/api/course",
-                                "/api/role",
-                                "/api/roles",
-                                "/api/courses/{courseId}",
-                                "/api/videos/{videoId}",
-                                "/api/videos",
-                                "/api/courses/{courseId}/notes",
-                                "/api/courses/{courseId}/notes")
+                                "/api/courses/{courseId}/notes"
+                        )
                         .permitAll()
                         .anyRequest().authenticated()
                 ).

@@ -43,8 +43,9 @@ public class UsersController {
 
     @PostMapping("/auth/login")
     public  ResponseEntity<LoginResponse> userLogin(@RequestBody LoginRequest loginRequest){
-        if (service.userLogin(loginRequest)!= null){
-            return  new ResponseEntity<>(service.userLogin(loginRequest), HttpStatus.OK);
+        LoginResponse response = service.userLogin(loginRequest);
+        if (response!= null){
+            return  new ResponseEntity<>(response, HttpStatus.OK);
         }else {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }

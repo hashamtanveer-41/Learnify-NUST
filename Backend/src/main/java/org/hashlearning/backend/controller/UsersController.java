@@ -6,7 +6,6 @@ import org.hashlearning.backend.model.dto.LoginRequest;
 import org.hashlearning.backend.model.dto.LoginResponse;
 import org.hashlearning.backend.model.dto.UserResponse;
 import org.hashlearning.backend.model.dto.UsersRequest;
-import org.hashlearning.backend.service.JWTService;
 import org.hashlearning.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,7 +14,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -25,9 +23,6 @@ public class UsersController {
 
     @Autowired
     private UserService service;
-
-    @Autowired
-    private JWTService jwtService;
 
     @PostMapping("/register")
     public ResponseEntity<UserResponse> registerUser(@RequestBody UsersRequest usersRequest){
